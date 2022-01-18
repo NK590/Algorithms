@@ -7,10 +7,6 @@
 
 ### 예시 코드
 
-from tracemalloc import start
-from turtle import end_fill
-
-
 def Quick_Sort(li: list):
     # li의 크기가 1이 될 때까지 재귀 선언
     if len(li) < 2:
