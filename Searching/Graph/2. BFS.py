@@ -7,7 +7,7 @@
 ### 예시 코드
 # 큐를 이용한 구현. DFS 스택 구현에서 스택을 큐로만 바꿔주면 됨
 
-# 파이썬에서 큐를 구현할 때는 일반적으로 collections 라이브러리의 deque 모듈을 이용
+# 파이썬에서 큐를 구현할 때는 일반적으로 collections 라이브러리의 deque 함수를 이용
 from collections import deque
 
 def BFS(graph: dict, root: int):
