@@ -1,4 +1,4 @@
-### Naive Prime Number Check (단순한 소수 판별)
+### Naive Prime Number Check (단순 소수 판별)
 
 # 어떤 주어진 수 a가 소수인지 판별하는 가장 단순한 방법은, 2에서 a-1까지 모든 수로 나눠보면서
 # 나누어 떨어지는 수가 있는지 알아보고, 나누어 떨어지는 수가 하나라도 있으면 소수가 아니고,
@@ -9,7 +9,6 @@
 ### 예시 코드
 
 from math import sqrt
-from pydoc import ispackage
 
 def isPrime(n: int):
     if n == 1:
