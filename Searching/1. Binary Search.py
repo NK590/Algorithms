@@ -30,7 +30,7 @@ def Binary_Search(li: list, num: int):
     return -1
 
 ### 예시 코드 2
-# 재귀적으로도 구현이 가능하다.
+# 재귀적으로도 구현 가능
 
 def Binary_Search_2(li: list, num: int, low: int, high: int):
     if low > high:
@@ -48,12 +48,12 @@ def Binary_Search_2(li: list, num: int, low: int, high: int):
     return Binary_Search_2(li, num, low, high)
 
 ### 예시 코드 3
-# 파이썬 내장 bisect 모듈을 사용하면 별다른 구현 없이 사용 가능하다.
+# 파이썬 내장 bisect 모듈을 사용하면 별다른 구현 없이 사용 가능
 
 from bisect import bisect_left, bisect_right
 
-# bisect 함수는 left, right에 따라 각각 왼쪽, 오른쪽 인덱스를 구한다.
-# 만약 주어진 리스트 안에 찾는 원소가 없을 경우도, 가장 가까운 인덱스를 출력한다.
+# bisect 함수는 left, right에 따라 각각 왼쪽, 오른쪽 인덱스를 구함
+# 만약 주어진 리스트 안에 찾는 원소가 없을 경우도, 가장 가까운 인덱스를 출력
 def Binary_Search_3_left(li, num):
     return bisect_left(li, num)
 
