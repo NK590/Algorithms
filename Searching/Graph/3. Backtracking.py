@@ -29,3 +29,36 @@ def DFS():
             visited.pop()
 
 DFS()
+
+### 예제 2
+'''
+N이 주어졌을 때, 크기가 N * N인 체스판 위에 퀸 N개를 서로 공격할 수 없게 배치하는 경우의 수를 구하시오.
+(N-Queen 문제)
+'''
+
+n = int(sys.stdin.readline())
+
+ans = 0
+v = [0 for _ in range(n)]
+
+def backtracking(row):
+    global ans
+    
+    if row == n:
+        ans += 1
+        return
+    
+    for c in range(n):
+        chk = True
+        for r in range(row):
+            if v[r] == c or row - r == abs(v[r] - c):
+                chk = False
+                break
+        
+        if chk:
+            v[row] = c
+            backtracking(row + 1)
+
+backtracking(0)
+
+print(ans)
