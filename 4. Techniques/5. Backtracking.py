@@ -19,10 +19,12 @@ li = [x for x in range(1, n+1)]
 visited = []
 
 def DFS():
+    # 방문한 원소의 수가 m이 될 시, 방문했던 원소를 출력 후 함수 종료
     if len(visited) == m:
         print(' '.join(map(str, visited)))
         return
     for num in li:
+        # li 안의 원소 num에 대해, num을 아직 방문하지 않았을 시 num을 넣고 재귀 호출 후, num을 뻄
         if num not in visited:
             visited.append(num)
             DFS()
@@ -32,7 +34,7 @@ DFS()
 
 ### 예제 2
 '''
-N이 주어졌을 때, 크기가 N * N인 체스판 위에 퀸 N개를 서로 공격할 수 없게 배치하는 경우의 수를 구하시오.
+자연수 N이 주어졌을 때, 크기가 N * N인 체스판 위에 퀸 N개를 서로 공격할 수 없게 배치하는 경우의 수를 구하시오.
 (N-Queen 문제)
 '''
 
@@ -44,17 +46,22 @@ v = [0 for _ in range(n)]
 def backtracking(row):
     global ans
     
+    # n번째 행까지 퀸을 채워넣었을 시, 답 카운트를 하나 늘리고 함수 종료
     if row == n:
         ans += 1
         return
     
+    # 다음 행에 퀸을 놓을 자리를 설정
     for c in range(n):
+        # 이전 행들에서 직선이나 대각선상에 퀸이 있으면 넣을 수 없음
         chk = True
         for r in range(row):
             if v[r] == c or row - r == abs(v[r] - c):
                 chk = False
                 break
         
+        # 이전 행들에서 직선이나 대각선상에 퀸이 하나도 없었을 시, 그 행 row에 c번째 열에 퀸을 넣고
+        # 다음 단계로 이동
         if chk:
             v[row] = c
             backtracking(row + 1)
