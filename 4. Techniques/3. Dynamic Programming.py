@@ -8,7 +8,7 @@
 
 ### 예제
 '''
-n번째 피보나치 수열을 구하시오. (n >= 2)
+n번째 피보나치 수열을 구하시오 (n >= 2)
 '''
 
 import sys
@@ -23,3 +23,24 @@ for i in range(2, n+1):
     dp[i] = dp[i-1] + dp[i-2]
 
 print(dp[n])
+
+### 예제 2
+'''
+수열이 주어질 떄, 그 수열에서 가장 긴 증가하는 부분 수열의 길이를 구하시오 (LIS 문제)
+'''
+
+n = int(sys.stdin.readline())
+li = list(map(int, sys.stdin.readline().split()))
+
+# dp[i] == 주어진 수열에서 i번째 수를 마지막 수로 갖는 LIS의 길이 
+dp = [0 for _ in range(n)]
+
+for i in range(n):
+    for j in range(i):
+        # i에 대해 0 ~ i-1 번째의 수를 탐색하면서, i번째 수가 j번째 수보다 클 시
+        # 해당 dp[j] + 1과 현재 dp[i]를 비교하여 둘 중에 큰 수로 갱신
+        if li[i] > li[j]:
+            dp[i] = max(dp[i], dp[j] + 1)
+
+# 각각의 원소가 그 수를 마지막으로 갖는 LIS 길이 정보를 담고 있으므로, 그 중 최대값을 출력
+print(max(dp))

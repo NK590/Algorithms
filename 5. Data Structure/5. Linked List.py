@@ -10,3 +10,76 @@
 # 시작 데이터와 끝 데이터 사이를 참조 가능하게 이어붙인 순환 연결 리스트 등이 있음
 
 # C와 같은 언어에서는 포인터를 이용하여 비교적 쉽게 구현이 가능하지만, Python에서는 구현이 다소 까다로움
+
+### 예시 코드
+# 여기서는 단일 연결 리스트를 구현함
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        # 초기값의 다음 값의 초기값은 None
+        self.next = None
+
+class Linked_List:
+    def __init__(self, data):
+        self.head = Node(data)
+    
+    # 헤더부터 탐색해 뒤에 새로운 노드 추가하기
+    def append(self, data):
+        cur = self.head
+        while cur.next is not None:
+            cur = cur.next
+        cur.next = Node(data)
+    
+    # 모든 노드 값 출력
+    def print_all(self):
+        cur = self.head
+        while cur is not None:
+            print(cur.data)
+            cur = cur.next
+    
+    # 노드 인덱스 알아내기
+    def get_node(self, index):
+        count = 0
+        node = self.head
+        while count < index:
+            count += 1
+            node = node.next
+        return node
+    
+    # 노드 삽입
+    def add_node(self, index, value):
+        new_node = Node(value)
+        if index == 0:
+            new_node.next = self.head
+            self.head = new_node
+            return
+        node = self.get_node(index - 1)
+        next_node = node.next
+        node.next = new_node
+        new_node.next = next_node
+    
+    # 노드 삭제
+    def delete_node(self, index):
+        if index == 0:
+            self.head = self.head.next
+            return
+        node = self.get_node(index - 1)
+        node.next = node.next.next
+        
+### 예제
+# 위에서 정의한 연결리스트 클래스로 정의한 인스턴스
+LL = Linked_List(0)
+
+LL.print_all()
+
+LL.append(1)
+LL.append(2)
+LL.append(4)
+LL.print_all()
+
+LL.add_node(1, 10)
+LL.print_all()
+
+LL.delete_node(3)
+LL.print_all()
