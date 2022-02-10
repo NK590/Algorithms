@@ -2,5 +2,5 @@
 ---
 ## Description
 
-Implementations of Algorithms & Data Structures using Python
+> Implementations of Algorithms & Data Structures using Python
 ---
